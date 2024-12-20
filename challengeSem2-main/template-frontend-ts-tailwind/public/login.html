@@ -24,8 +24,9 @@
       
       <div class="flex justify-center mt-2">
         <!-- Bouton Facebook -->
-        <button id="facebookBtn" type="button" class="flex items-center bg-blue-600 text-white py-2 px-4 rounded-lg mr-4">
-          <img src="assets/img/facebookicon.png" alt="Facebook" class="w-32 h-5 mr-" style="width: 30px;"> Facebook
+         <!-- Bouton Facebook -->
+         <button onclick="facebookLogina()" type="button" class="flex items-center bg-blue-600 text-white py-2 px-4 rounded-lg">
+          <img src="assets/img/facebookicon.png" alt="Facebook" class="w-5 h-5 mr-2"> Facebook
         </button>
         <!-- Bouton Google -->
         <div id="g_id_onload"
@@ -44,6 +45,24 @@
 </div>
 <script src="../dist/login.js"></script>
 <script src="https://accounts.google.com/gsi/client" async defer></script>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId: '2894977510666256',
+      cookie: true,
+      xfbml: true,
+      version: 'v12.0'
+    });
+  };
+
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+</script>
 
 </body>
 </html>

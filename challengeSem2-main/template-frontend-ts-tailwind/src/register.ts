@@ -207,38 +207,43 @@ function handleCredentialResponse(response: any) {
 declare const FB: any; // Declare FB if TypeScript complains
 
 function facebookLogin() {
-  console.log('aaaaa');
+  console.log('Attempting Facebook login...');
+  
   FB.login((response: any) => {
     if (response.authResponse) {
       console.log('Welcome! Fetching your information...');
-
+      
       FB.api('/me', { fields: 'id,name,email,picture' }, async (userInfo: any) => {
         console.log('User info:', userInfo);
 
-        // Example of processing user info
         const user = {
-          id: userInfo.id,
+          id: crypto.randomUUID(), // Generate a unique ID for the user
           username: userInfo.name,
-          email: userInfo.email,
-          profileImage: userInfo.picture.data.url,
+          email: userInfo.email || '', // Fallback to empty string if email is not provided
+          password: '', // No password needed for Facebook login
+          profileImage: userInfo.picture.data.url, // Facebook profile picture
         };
 
-        console.log('Logged in user:', user);
+        try {
+          // Add user to your database
+          await addUser(user); // Ensure `addUser` is defined and adds the user to your database
 
-        // Optional: Save user info to your database or localStorage
-        localStorage.setItem('idUser', user.id);
-        localStorage.setItem('userName', user.username);
-        alert('Connexion réussie avec Facebook !');
+          // Store user info in localStorage
+          localStorage.setItem('idUser', user.id);
+          localStorage.setItem('userName', user.username);
 
-        // Redirect to another page
-        window.location.href = 'about.html';
+          alert('Connexion réussie avec Facebook !');
+          window.location.href = 'about.html'; // Redirect to About page
+        } catch (error) {
+          console.error('Erreur lors de l\'enregistrement de l\'utilisateur Facebook :', error);
+          alert('Erreur lors de l\'enregistrement.');
+        }
       });
     } else {
       console.error('User cancelled login or did not fully authorize.');
       alert('Connexion Facebook échouée.');
     }
-  }, { scope: 'public_profile,email' }); // Request these permissions
+  }, { scope: 'public_profile,email' }); // Request necessary permissions
 }
-
 // Ensure the function is globally accessible
 (window as any).facebookLogin = facebookLogin;

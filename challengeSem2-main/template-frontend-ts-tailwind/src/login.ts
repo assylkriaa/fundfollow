@@ -102,3 +102,41 @@ async function handleCredentialResponsea(response: any) {
 
 // Ensure this function is available globally for the Google API to call
 (window as any).handleCredentialResponsea = handleCredentialResponsea;
+
+
+function facebookLogina() {
+  console.log('aaaaa');
+  FB.login((response: any) => {
+    if (response.authResponse) {
+      console.log('Welcome! Fetching your information...');
+
+      FB.api('/me', { fields: 'id,name,email,picture' }, async (userInfo: any) => {
+        console.log('User info:', userInfo);
+
+        // Example of processing user info
+        const user = {
+          id: userInfo.id,
+          username: userInfo.name,
+          email: userInfo.email,
+          profileImage: userInfo.picture.data.url,
+        };
+
+        console.log('Logged in user:', user);
+
+        // Optional: Save user info to your database or localStorage
+        localStorage.setItem('idUser', user.id);
+        localStorage.setItem('userName', user.username);
+        alert('Connexion réussie avec Facebook !');
+
+        // Redirect to another page
+        window.location.href = 'about.html';
+      });
+    } else {
+      console.error('User cancelled login or did not fully authorize.');
+      alert('Connexion Facebook échouée.');
+    }
+  }, { scope: 'public_profile,email' }); // Request these permissions
+}
+
+// Ensure the function is globally accessible
+(window as any).facebookLogin = facebookLogin;
