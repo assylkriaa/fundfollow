@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Budget - Gestion des Budgets</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+<!-- Sidebar -->
+<div class="fixed top-0 left-0 w-60 h-screen bg-gray-50 shadow-md z-50 hidden lg:block">
+  <iframe src="sidebar.html" class="w-full h-full border-0"></iframe>
+</div>
+
+<!-- Top Bar -->
+<div class="fixed top-0 left-60 w-[calc(100%-240px)] h-16 bg-gray-50 shadow-md z-50">
+  <iframe src="topbar.html" class="w-full h-full border-0"></iframe>
+</div>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen ml-60 mt-24 p-5 bg-gray-100 min-h-screen">
+  <div class="flex justify-between items-center mb-6">
+    <h2 class="text-2xl font-bold">Budgets</h2>
+    <a href="about.html" class="text-blue-500 hover:underline flex items-center">
+      Retour à la page About <span class="ml-2">→</span>
+    </a>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+    <!-- Budget Inputs -->
+    <div class="p-4 bg-gray-50 border rounded shadow flex flex-col items-center">
+      <span class="text-green-500 text-lg font-bold mb-2">Global</span>
+      <input id="globalBudget" type="number" class="w-full p-2 border rounded text-center" placeholder="Entrez un montant">
+    </div>
+    <div class="p-4 bg-gray-50 border rounded shadow flex flex-col items-center">
+      <span class="text-purple-500 text-lg font-bold mb-2">Transport</span>
+      <input id="transportBudget" type="number" class="w-full p-2 border rounded text-center" placeholder="Entrez un montant">
+    </div>
+    <div class="p-4 bg-gray-50 border rounded shadow flex flex-col items-center">
+      <span class="text-blue-500 text-lg font-bold mb-2">Loisir</span>
+      <input id="leisureBudget" type="number" class="w-full p-2 border rounded text-center" placeholder="Entrez un montant">
+    </div>
+    <div class="p-4 bg-gray-50 border rounded shadow flex flex-col items-center">
+      <span class="text-blue-700 text-lg font-bold mb-2">Santé</span>
+      <input id="healthBudget" type="number" class="w-full p-2 border rounded text-center" placeholder="Entrez un montant">
+    </div>
+    <div class="p-4 bg-gray-50 border rounded shadow flex flex-col items-center">
+      <span class="text-pink-500 text-lg font-bold mb-2">Logement</span>
+      <input id="housingBudget" type="number" class="w-full p-2 border rounded text-center" placeholder="Entrez un montant">
+    </div>
+    <div class="p-4 bg-gray-50 border rounded shadow flex flex-col items-center">
+      <span class="text-pink-500 text-lg font-bold mb-2">Education</span>
+      <input id="educationBudget" type="number" class="w-full p-2 border rounded text-center" placeholder="Entrez un montant">
+    </div>
+  </div>
+
+  <div class="mt-6 flex justify-end">
+    <button id="saveBudgets" class="bg-blue-500 text-white p-2 rounded">Enregistrer les Budgets</button>
+  </div>
+</div>
+
+<script src="../dist/budget.js"></script>
+</body>
+</html>

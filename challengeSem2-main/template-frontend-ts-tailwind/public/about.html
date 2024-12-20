@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page About - Convertisseur de Devises</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Inclut Chart.js depuis le CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<!-- Sidebar -->
+<div class="fixed top-0 left-0 w-60 h-screen bg-gray-50 shadow-md z-50 hidden lg:block">
+    <iframe src="sidebar.html" class="w-full h-full border-0"></iframe>
+  </div>
+  
+  <!-- Top Bar -->
+  <div class="fixed top-0 left-60 w-[calc(100%-240px)] h-16 bg-gray-50 shadow-md z-50">
+    <iframe src="topbar.html" class="w-full h-full border-0"></iframe>
+  </div>
+  
+<body class="bg-gray-100 flex items-center justify-center min-h-screen ml-60 mt-24 p-5 bg-gray-100 min-h-screen">
+<!-- Section Budget -->
+<div id="budgetDisplay" class="w-full max-w-md p-4 bg-white shadow-lg rounded mt-4">
+    <h2 class="text-xl font-bold mb-4 text-center">Budgets</h2>
+    <div id="budgetSummary" class="text-gray-700">
+        <!-- Résumé des budgets sera affiché ici -->
+    </div>
+</div>
+
+<!-- Graphique Budget -->
+<div class="w-full max-w-md p-4 mt-6 bg-white shadow-lg rounded">
+    <h2 class="text-xl font-bold mb-4 text-center">Répartition des Budgets</h2>
+    <canvas id="budgetChart"></canvas>
+</div>
+
+<!-- Section Transactions -->
+<div class="w-full max-w-md p-4 mt-6 bg-white shadow-lg rounded">
+    <h2 class="text-xl font-bold mb-4 text-center">Transactions</h2>
+    <div id="transactionList" class="space-y-4">
+        <!-- Transactions seront affichées ici -->
+    </div>
+</div>
+
+
+
+
+
+<script src="../dist/about.js"></script>
+</body>
+</div>
+</html>

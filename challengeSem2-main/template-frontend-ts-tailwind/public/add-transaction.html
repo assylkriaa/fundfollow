@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajouter une Transaction</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<!-- Sidebar -->
+<div class="fixed top-0 left-0 w-60 h-screen bg-gray-50 shadow-md z-50 hidden lg:block">
+  <iframe src="sidebar.html" class="w-full h-full border-0"></iframe>
+</div>
+
+<!-- Top Bar -->
+<div class="fixed top-0 left-60 w-[calc(100%-240px)] h-16 bg-gray-50 shadow-md z-50">
+  <iframe src="topbar.html" class="w-full h-full border-0"></iframe>
+</div>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen ml-60 mt-24 p-5 bg-gray-100 min-h-screen">
+  <div class="w-full max-w-md p-8 bg-white shadow-lg rounded">
+  <h2 class="text-2xl font-bold mb-6 text-center">Ajouter une Transaction</h2>
+  <form id="transactionForm">
+    <div class="mb-4">
+      <label for="transactionType" class="block text-gray-700">Type de transaction</label>
+      <select id="transactionType" class="w-full p-2 border border-gray-300 rounded">
+        <option value="income">Revenu</option>
+        <option value="expense">Dépense</option>
+      </select>
+    </div>
+    <div class="mb-4">
+      <label for="category" class="block text-gray-700">Catégorie</label>
+      <select id="category" class="w-full p-2 border border-gray-300 rounded">
+        <option value="leisure">Loisir</option>
+        <option value="alimentaire">Alimentaire</option>
+        <option value="transport">Transport</option>
+        <option value="housing">Logement</option>
+        <option value="health">Santé</option>
+        <option value="éducation">Éducation</option>
+        <option value="autre">Autre</option>
+      </select>
+    </div>
+    <div class="mb-4">
+      <label for="amount" class="block text-gray-700">Montant</label>
+      <input type="number" id="amount" class="w-full p-2 border border-gray-300 rounded" placeholder="Montant de la transaction">
+    </div>
+    <div class="mb-4">
+      <label for="location" class="block text-gray-700">Lieu</label>
+      <div class="flex">
+        <input type="text" id="location" class="w-full p-2 border border-gray-300 rounded" placeholder="Lieu de la transaction">
+        <button type="button" id="getLocation" class="ml-2 bg-blue-500 text-white p-2 rounded">📍</button>
+      </div>
+    </div>
+    <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded">Ajouter</button>
+  </form>
+</div>
+<script src="../dist/add-transaction.js"></script>
+</body>
+</html>
